@@ -1,3 +1,4 @@
+// app.js
 const express = require('express');
 const client = require('prom-client');
 
@@ -23,9 +24,8 @@ app.use((req, res, next) => {
   next();
 });
 
-// ✅ Simple sample endpoint with artificial delay
-app.get('/todos', async (req, res) => {
-  await new Promise(resolve => setTimeout(resolve, 5000)); // 500ms delay
+// Simple sample endpoint
+app.get('/todos', (req, res) => {
   res.json([
     { id: 1, task: 'Buy milk' },
     { id: 2, task: 'Write code' }

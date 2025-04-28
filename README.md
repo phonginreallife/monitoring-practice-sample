@@ -14,9 +14,8 @@ This repository contains a sample Node.js Todo backend application instrumented 
 ## Prerequisites
 
 - Docker & access to a container registry
-- Kubernetes cluster (e.g., kind, EKS, GKE)
+- Kubernetes cluster (e.g., kind, EKS, GKE): aws alb controllers, ebs driver
 - `kubectl` and `helm` installed
-- Kuma service mesh installed on the cluster (for blackbox uptime checks)
 - Namespace `monitoring` for Prometheus, OpenTelemetry Collector, and Grafana
 
 ## Workflow Overview
@@ -31,9 +30,7 @@ This repository contains a sample Node.js Todo backend application instrumented 
 4. **Grafana**:
    - Connects to Prometheus as a data source.
    - Visualizes the Four Golden Signals: latency, traffic, errors, saturation.
-5. **Kuma Health Checks**:
-   - Provides blackbox uptime monitoring by probing `/healthz` on each pod.
-   - Metrics available via Kuma’s built-in metrics endpoint for service mesh uptime.
+
 
 ## Setup Instructions
 
