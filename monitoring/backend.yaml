@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todo-backend
+  labels:
+    app: todo
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: todo
+  template:
+    metadata:
+      labels:
+        app: todo
+      annotations:
+        kuma.io/health: "http://localhost:3000/healthz"
+    spec:
+      containers:
+      - name: todo
+        image: 123831926968.dkr.ecr.us-east-2.amazonaws.com/devops-training-monitoring-practice:latest
+        ports:
+        - containerPort: 3000
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: todo-svc
+spec:
+  selector:
+    app: todo
+  ports:
+  - port: 80
+    targetPort: 3000

@@ -1,0 +1,19 @@
+service:
+  enabled: true
+  pipelines:
+    metrics:
+      receivers:
+        - otlp
+      exporters:
+        - prometheus
+
+receivers:
+  otlp:
+    protocols:
+      http:
+        endpoint: "0.0.0.0:4318"
+
+exporters:
+  prometheus:
+    endpoint: "/metrics"
+
