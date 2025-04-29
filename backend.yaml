@@ -13,8 +13,6 @@ spec:
     metadata:
       labels:
         app: todo
-      annotations:
-        kuma.io/health: "http://localhost:3000/healthz"
     spec:
       containers:
       - name: todo
